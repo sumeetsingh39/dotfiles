@@ -210,7 +210,7 @@ alias ip='ip --color=auto'
 
 # --- Config quick access ---
 alias zshrc='nvim ~/.zshrc'
-alias swayconfig='nvim ~/.config/sway/config.d/main.conf'
+alias swayconfig='nvim ~/.config/sway/config'
 alias waybarconfig='nvim ~/.config/waybar/config'
 alias waybarcss='nvim ~/.config/waybar/style.css'
 alias kittyconfig='nvim ~/.config/kitty/kitty.conf'

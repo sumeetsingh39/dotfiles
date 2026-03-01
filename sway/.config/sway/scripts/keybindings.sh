@@ -14,7 +14,7 @@ BINDINGS=$(cat << 'EOF'
  SWAY — Basics        │  Mod+Shift+C         │  Reload sway config
  SWAY — Basics        │  Mod+Shift+E         │  Power menu
  SWAY — Basics        │  Mod+F1              │  This cheatsheet
- SWAY — Basics        │  Mod+F1 (lock)       │  Lock screen (gtklock)
+ SWAY — Basics        │  Mod+alt+l (lock)    │  Lock screen (gtklock)
  SWAY — Focus         │  Mod+H/J/K/L         │  Focus left/down/up/right
  SWAY — Focus         │  Mod+Arrow keys      │  Focus left/down/up/right
  SWAY — Focus         │  Mod+Space           │  Toggle focus tiling/floating
@@ -39,9 +39,9 @@ BINDINGS=$(cat << 'EOF'
  SWAY — Apps          │  Mod+O               │  Browser (firefox)
  SWAY — Clipboard     │  Mod+Ctrl+V          │  Clipboard picker
  SWAY — Clipboard     │  Mod+Ctrl+X          │  Delete clipboard entry
- SWAY — Screenshot    │  Print               │  Screenshot selection → swappy
- SWAY — Screenshot    │  Ctrl+Print          │  Screenshot window → swappy
- SWAY — Screenshot    │  Shift+Print         │  Screenshot display → swappy
+ SWAY — Screenshot    │  Mod+G               │  Screenshot selection → swappy
+ SWAY — Screenshot    │  Mod+Ctrl+G          │  Screenshot window → swappy
+ SWAY — Screenshot    │  Mod+Shift+G         │  Screenshot display → swappy
  SWAY — Media         │  XF86AudioRaise      │  Volume up +5%
  SWAY — Media         │  XF86AudioLower      │  Volume down -5%
  SWAY — Media         │  XF86AudioMute       │  Toggle mute
@@ -90,7 +90,7 @@ BINDINGS=$(cat << 'EOF'
  ZSH — Vim mode       │  ci" / ca(           │  Change inside/around delimiter
  ZSH — Vim mode       │  v                   │  Visual mode
  ZSH — Configs        │  zshrc               │  Edit ~/.zshrc
- ZSH — Configs        │  swayconfig          │  Edit sway main.conf
+ ZSH — Configs        │  swayconfig          │  Edit sway conf
  ZSH — Configs        │  waybarconfig        │  Edit waybar config
  ZSH — Configs        │  waybarcss           │  Edit waybar style.css
  ZSH — Configs        │  kittyconfig         │  Edit kitty.conf
