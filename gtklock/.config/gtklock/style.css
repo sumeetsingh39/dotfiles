@@ -1,0 +1,157 @@
+/* =============================================================================
+ * gtklock - Catppuccin Mocha Lavender
+ * =========================================================================== */
+
+/* --- Palette --- */
+/* base      #1e1e2e  mantle  #181825  crust   #11111b  */
+/* surface0  #313244  surface1 #45475a surface2 #585b70 */
+/* overlay0  #6c7086  overlay1 #7f849c text    #cdd6f4  */
+/* lavender  #b4befe  mauve   #cba6f7  red     #f38ba8  */
+/* green     #a6e3a1  peach   #fab387  yellow  #f9e2af  */
+
+/* --- Root window (full screen background) --- */
+window {
+    background-color: rgba(17, 17, 27, 0.85);
+}
+
+/* --- Main lock box (center card) --- */
+box#body {
+    background-color: rgba(30, 30, 46, 0.92);
+    border-radius: 16px;
+    border: 2px solid #b4befe;
+    padding: 40px 48px;
+    min-width: 340px;
+}
+
+/* --- Clock --- */
+label#clock-time {
+    font-family: "JetBrainsMono Nerd Font";
+    font-size: 72px;
+    font-weight: bold;
+    color: #cdd6f4;
+    margin-bottom: 4px;
+}
+
+label#clock-date {
+    font-family: "Noto Sans";
+    font-size: 15px;
+    color: #a6adc8;
+    margin-bottom: 24px;
+    letter-spacing: 1px;
+}
+
+/* --- Password input --- */
+entry#pw-input {
+    background-color: #313244;
+    color: #cdd6f4;
+    border: 2px solid #45475a;
+    border-radius: 8px;
+    padding: 10px 16px;
+    font-family: "JetBrainsMono Nerd Font";
+    font-size: 14px;
+    caret-color: #b4befe;
+    min-width: 260px;
+}
+
+entry#pw-input:focus {
+    border-color: #b4befe;
+    box-shadow: 0 0 0 3px rgba(180, 190, 254, 0.15);
+}
+
+/* Wrong password shake/highlight */
+entry#pw-input.wrong-password {
+    border-color: #f38ba8;
+    color: #f38ba8;
+}
+
+/* --- Error / unlock message --- */
+label#unlock-button,
+label#error-label {
+    font-family: "Noto Sans";
+    font-size: 12px;
+    color: #f38ba8;
+    margin-top: 6px;
+}
+
+/* --- Userinfo module --- */
+box#userinfo-box {
+    margin-bottom: 20px;
+}
+
+image#userinfo-image {
+    border-radius: 50%;
+    border: 3px solid #b4befe;
+    margin-bottom: 10px;
+}
+
+label#userinfo-name {
+    font-family: "Noto Sans";
+    font-size: 16px;
+    font-weight: bold;
+    color: #cdd6f4;
+    margin-bottom: 2px;
+}
+
+label#userinfo-system-name {
+    font-family: "JetBrainsMono Nerd Font";
+    font-size: 12px;
+    color: #6c7086;
+}
+
+/* --- Powerbar module --- */
+box#powerbar-box {
+    margin-top: 28px;
+    spacing: 8px;
+}
+
+button.powerbar-button {
+    background-color: #313244;
+    color: #cdd6f4;
+    border: 1px solid #45475a;
+    border-radius: 8px;
+    padding: 8px 16px;
+    font-family: "Noto Sans";
+    font-size: 13px;
+    transition: all 0.15s ease;
+    min-width: 64px;
+}
+
+button.powerbar-button:hover {
+    background-color: #45475a;
+    border-color: #b4befe;
+    color: #b4befe;
+}
+
+button.powerbar-button:focus {
+    outline: none;
+    border-color: #b4befe;
+}
+
+/* Individual button accent colors on hover */
+button#powerbar-suspend:hover {
+    border-color: #89b4fa;
+    color: #89b4fa;
+}
+
+button#powerbar-reboot:hover {
+    border-color: #f9e2af;
+    color: #f9e2af;
+}
+
+button#powerbar-poweroff:hover {
+    background-color: rgba(243, 139, 168, 0.15);
+    border-color: #f38ba8;
+    color: #f38ba8;
+}
+
+button#powerbar-logout:hover {
+    border-color: #fab387;
+    color: #fab387;
+}
+
+/* Powerbar labels */
+label.powerbar-label {
+    font-size: 11px;
+    color: #6c7086;
+    margin-top: 2px;
+}
