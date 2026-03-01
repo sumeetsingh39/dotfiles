@@ -1,0 +1,22 @@
+# Secrets / sensitive
+*.env
+.env.*
+secrets/
+*.key
+*.pem
+
+# Cache
+__pycache__/
+*.pyc
+.cache/
+node_modules/
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Editors
+.vscode/
+*.swp
+*.swo
+*~

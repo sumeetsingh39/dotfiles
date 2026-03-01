@@ -1,0 +1,99 @@
+[user]
+	name = Sumeet Singh
+	email = sumeetsngh0@gmail.com
+
+[core]
+	editor = nvim
+	pager = delta
+	autocrlf = input        # normalize line endings on commit
+	whitespace = fix         # fix trailing whitespace
+
+[init]
+	defaultBranch = main
+
+[pull]
+	rebase = true            # rebase instead of merge on pull
+
+[push]
+	autoSetupRemote = true   # auto set upstream on first push
+	followTags = true        # push tags along with commits
+
+[fetch]
+	prune = true             # remove deleted remote branches on fetch
+
+[merge]
+	conflictstyle = zdiff3   # better conflict markers (shows base too)
+
+[diff]
+	algorithm = histogram    # better diff algorithm
+	colorMoved = default     # color moved lines differently
+
+[rebase]
+	autoStash = true         # auto stash/unstash when rebasing
+
+[rerere]
+	enabled = true           # remember conflict resolutions
+
+[branch]
+	sort = -committerdate    # sort branches by most recently used
+
+[tag]
+	sort = version:refname   # sort tags by version number
+
+[help]
+	autocorrect = prompt     # suggest corrections for typos
+
+# --- Delta ---
+[delta]
+	navigate = true          # n/N to jump between diff sections
+	side-by-side = true      # side by side diffs
+	line-numbers = true
+	syntax-theme = Catppuccin Mocha
+	hyperlinks = true
+	file-style = bold yellow
+	file-decoration-style = yellow ul
+	hunk-header-style = file line-number syntax
+	hunk-header-decoration-style = blue box
+	minus-style = syntax "#3d1f1f"
+	minus-emph-style = syntax "#6b2020"
+	plus-style = syntax "#1a3324"
+	plus-emph-style = syntax "#1e4d35"
+	map-styles = \
+		bold purple => syntax "#3b1f3b", \
+		bold blue => syntax "#1f2d3b"
+	blame-palette = "#1e1e2e" "#181825" "#11111b" "#313244"
+
+[interactive]
+	diffFilter = delta --color-only   # delta in interactive mode (git add -p)
+
+# --- Aliases ---
+[alias]
+	st = status -sb                          # short status with branch
+	lg = log --oneline --graph --decorate --all
+	ll = log --pretty=format:"%C(yellow)%h%Creset %C(blue)%ad%Creset %C(green)%an%Creset %s" --date=short
+	last = log -1 HEAD                       # show last commit
+	undo = reset HEAD~1 --mixed             # undo last commit, keep changes
+	unstage = restore --staged              # unstage a file
+	discard = restore                       # discard working changes
+	aliases = config --get-regexp alias     # list all aliases
+	branches = branch -a --sort=-committerdate  # all branches sorted by date
+	tags = tag -l --sort=-version:refname   # all tags sorted
+	stashes = stash list
+	contributors = shortlog -sn --no-merges # list contributors by commits
+	today = log --since=midnight --oneline  # commits made today
+	week = log --since=1.week.ago --oneline # commits this week
+	wip = commit -am "wip"                  # quick wip commit
+	unwip = reset HEAD~1 --mixed            # undo wip commit
+
+# --- URL shorthands ---
+[url "git@github.com:"]
+	insteadOf = gh:             # clone with: git clone gh:user/repo
+
+[url "git@gitlab.com:"]
+	insteadOf = gl:             # clone with: git clone gl:user/repo
+
+[color]
+	ui = auto
+
+[credential]
+	helper = /usr/lib/git-core/git-credential-libsecret  # store credentials in keyring

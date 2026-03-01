@@ -1,0 +1,3 @@
+--target=/home/$USER
+--dir=/home/$USER/dotfiles
+--verbose=1

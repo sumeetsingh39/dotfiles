@@ -1,0 +1,244 @@
+/* =============================================================================
+ * Waybar - Catppuccin Mocha Lavender Theme
+ * =========================================================================== */
+
+/* Catppuccin Mocha palette */
+@define-color base      #1e1e2e;
+@define-color mantle    #181825;
+@define-color crust     #11111b;
+@define-color surface0  #313244;
+@define-color surface1  #45475a;
+@define-color surface2  #585b70;
+@define-color overlay0  #6c7086;
+@define-color overlay1  #7f849c;
+@define-color overlay2  #9399b2;
+@define-color subtext0  #a6adc8;
+@define-color subtext1  #bac2de;
+@define-color text      #cdd6f4;
+@define-color lavender  #b4befe;
+@define-color blue      #89b4fa;
+@define-color sapphire  #74c7ec;
+@define-color sky       #89dceb;
+@define-color teal      #94e2d5;
+@define-color green     #a6e3a1;
+@define-color yellow    #f9e2af;
+@define-color peach     #fab387;
+@define-color maroon    #eba0ac;
+@define-color red       #f38ba8;
+@define-color mauve     #cba6f7;
+@define-color pink      #f5c2e7;
+@define-color flamingo  #f2cdcd;
+@define-color rosewater #f5e0dc;
+
+@keyframes blink-warning {
+    70% { color: @base; }
+    to  { color: @base; background-color: @peach; }
+}
+
+@keyframes blink-critical {
+    70% { color: @base; }
+    to  { color: @base; background-color: @red; }
+}
+
+* {
+    border: none;
+    border-radius: 0;
+    min-height: 0;
+    margin: 0;
+    padding: 0;
+    font-family: "JetBrainsMono Nerd Font", "Noto Sans", monospace;
+    font-size: 13px;
+}
+
+#waybar {
+    background-color: @crust;
+    color: @text;
+    border-bottom: 2px solid @lavender;
+}
+
+/* Pill-style module background */
+#workspaces,
+#mode,
+#window,
+#network,
+#idle_inhibitor,
+#cpu,
+#memory,
+#backlight,
+#pulseaudio,
+#battery,
+#clock,
+#tray,
+#custom-keyboard-layout,
+#custom-power,
+#custom-launcher,
+#custom-audio,
+#custom-weather,
+#custom-stats {
+    padding: 0 10px;
+    margin: 3px 2px;
+    border-radius: 6px;
+    background-color: @surface0;
+    color: @text;
+}
+
+/* Launcher - accent colored */
+#custom-launcher {
+    color: @lavender;
+    background-color: transparent;
+    font-size: 18px;
+    padding: 0 14px 0 10px;
+    margin: 0;
+}
+
+/* Workspaces */
+#workspaces {
+    background-color: transparent;
+    padding: 0 4px;
+}
+
+#workspaces button {
+    border-radius: 5px;
+    color: @subtext0;
+    background-color: @surface0;
+    padding: 2px 0px;
+    margin: 3px 4px;
+    transition: all 0.2s ease;
+}
+
+#workspaces button:hover {
+    background-color: @surface1;
+    color: @text;
+    box-shadow: none;
+}
+
+#workspaces button.focused {
+    background-color: @lavender;
+    color: @base;
+    font-weight: bold;
+}
+
+#workspaces button.urgent {
+    background-color: @red;
+    color: @base;
+}
+
+/* Mode */
+#mode {
+    background-color: @mauve;
+    color: @base;
+    font-style: italic;
+    font-weight: bold;
+    padding: 0 12px;
+}
+
+/* Window title */
+#window {
+    background-color: transparent;
+    color: @subtext1;
+    font-weight: bold;
+}
+
+/* Clock - centered, accent color */
+#clock {
+    background-color: @surface0;
+    color: @lavender;
+    font-weight: bold;
+}
+
+/* CPU */
+#cpu {
+    color: @sky;
+}
+
+#cpu.warning { color: @peach; }
+#cpu.critical {
+    color: @red;
+    animation-name: blink-critical;
+    animation-duration: 2s;
+    animation-timing-function: linear;
+    animation-iteration-count: infinite;
+    animation-direction: alternate;
+}
+
+/* Memory */
+#memory { color: @sapphire; }
+#memory.warning { color: @peach; }
+#memory.critical {
+    color: @red;
+    animation-name: blink-critical;
+    animation-duration: 2s;
+    animation-timing-function: linear;
+    animation-iteration-count: infinite;
+    animation-direction: alternate;
+}
+
+/* Backlight */
+#backlight { color: @yellow; }
+
+/* Pulseaudio */
+#pulseaudio { color: @teal; }
+#pulseaudio.muted { color: @overlay1; }
+
+/* Battery */
+#battery { color: @green; }
+#battery.warning { color: @peach; }
+#battery.critical { color: @red; }
+#battery.warning.discharging {
+    animation-name: blink-warning;
+    animation-duration: 3s;
+    animation-timing-function: linear;
+    animation-iteration-count: infinite;
+    animation-direction: alternate;
+}
+#battery.critical.discharging {
+    animation-name: blink-critical;
+    animation-duration: 2s;
+    animation-timing-function: linear;
+    animation-iteration-count: infinite;
+    animation-direction: alternate;
+}
+#battery.charging { color: @green; }
+
+/* Network */
+#network { color: @blue; }
+#network.disconnected { color: @red; }
+
+/* Tray */
+#tray { background-color: @surface0; }
+#tray > .passive { -gtk-icon-effect: dim; }
+#tray > .needs-attention { -gtk-icon-effect: highlight; background-color: @maroon; }
+
+/* Idle inhibitor */
+#idle_inhibitor { color: @overlay2; }
+#idle_inhibitor.activated { color: @lavender; }
+
+/* Power button */
+#custom-power {
+    color: @red;
+    background-color: transparent;
+    font-size: 14px;
+    padding: 0 10px;
+    margin-right: 5px;
+}
+
+#custom-power:hover {
+    background-color: @red;
+    color: @base;
+    border-radius: 6px;
+}
+
+#custom-stats{
+    color: @teal;
+}
+#custom-stats.critical {
+  color: @red;
+  background-color: @rosewater;
+  animation: blink-critical 2s ease-in-out infinite;
+}
+
+#custom-audio{color:@peach;}
+#custom-weather{color:@rosewater;}
+
+/* Keyboard layout */
+#custom-keyboard-layout { color: @flamingo; }

@@ -1,0 +1,293 @@
+# Custom windowing rules
+for_window [class="Yad" instance="yad"] floating enable
+for_window [app_id="yad"] floating enable
+for_window [app_id="blueman-manager"] floating enable,  resize set width 40 ppt height 30 ppt
+for_window [app_id="pavucontrol" ] floating enable, resize set width 40 ppt height 30 ppt
+for_window [window_role="pop-up"] floating enable
+for_window [window_role="bubble"] floating enable
+for_window [window_role="task_dialog"] floating enable
+for_window [window_role="Preferences"] floating enable
+for_window [window_type="dialog"] floating enable
+for_window [window_type="menu"] floating enable
+for_window [window_role="About"] floating enable
+for_window [title="File Operation Progress"] floating enable, border pixel 1, sticky enable, resize set width 40 ppt height 30 ppt
+for_window [app_id="floating_shell_portrait"] floating enable, border pixel 1, sticky enable, resize set width 30 ppt height 40 ppt
+for_window [title="Picture in picture"] floating enable, sticky enable
+for_window [title="waybar_htop"] floating enable, resize set width 70 ppt height 70 ppt
+for_window [title="waybar_nmtui"] floating enable
+for_window [title="Save File"] floating enable
+for_window [app_id="firefox" title="Firefox — Sharing Indicator"] kill
+
+# Inhibit idle
+for_window [app_id="firefox"] inhibit_idle fullscreen
+for_window [app_id="Chromium"] inhibit_idle fullscreen
+
+# Auth with polkit-gnome:
+exec /usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1
+
+# Import environment variables for user systemd service manager
+exec systemctl --user import-environment DISPLAY WAYLAND_DISPLAY SWAYSOCK
+
+# Update dbus environments with display variables
+exec hash dbus-update-activation-environment 2>/dev/null && \
+     dbus-update-activation-environment --systemd DISPLAY WAYLAND_DISPLAY SWAYSOCK
+
+# Idle configuration
+exec swayidle idlehint 1
+exec_always swayidle -w before-sleep "gtklock -d"
+
+# Desktop notifications (dunst via dunstify; dunst is the daemon)
+exec dunst
+
+# Kitty terminal (no server needed unlike foot)
+# Start kitty directly, no server mode required
+
+# Autotiling
+exec autotiling
+
+# cliphist
+exec wl-paste --type text --watch cliphist store
+exec wl-paste --type image --watch cliphist store
+
+# Network Applet
+exec nm-applet --indicator
+
+# Firewall Applet
+exec sleep 2 && firewall-applet
+
+# Welcome App
+exec eos-welcome --startdelay=3
+
+# nwg-drawer
+exec_always nwg-drawer -r -c 7 -is 90 -mb 10 -ml 50 -mr 50 -mt 10
+
+# Logo key. Use Mod1 for Alt.
+set $mod Mod4
+
+# Add Vim key support
+set $left h
+set $down j
+set $up k
+set $right l
+
+# Set default terminal emulator
+set $term kitty
+
+# Application launcher
+set $launcher fuzzel
+
+# Application menu
+set $menu nwg-drawer
+
+# Power Menu
+set $powermenu ~/.config/sway/scripts/power_menu.sh
+
+### Key bindings
+    # Launch the terminal
+    bindsym $mod+Return exec $term
+
+    # Open the power menu
+    bindsym $mod+Shift+e exec $powermenu
+
+    # Kill focused window
+    bindsym $mod+q kill
+
+    # Start your launcher
+    bindsym $mod+d exec $launcher
+
+    # Menu
+    bindsym $mod+Shift+d exec $menu
+
+    # Lock screen
+    bindsym $mod+mod1+l exec gtklock
+
+    # Keybindings cheatsheet
+    bindsym $mod+F1 exec ~/.config/sway/scripts/keybindings.sh
+
+    # Activities
+    bindsym $mod+p exec ~/.config/sway/scripts/window_switcher.sh
+
+    # Move windows by holding down $mod and left mouse button.
+    floating_modifier $mod normal
+
+    # Reload the configuration file
+    bindsym $mod+Shift+c reload
+
+    bindsym mod1+shift+tab exec ~/.config/sway/scripts/alttab prev
+    bindsym mod1+tab exec ~/.config/sway/scripts/alttab next
+#
+# Moving around:
+#
+    bindsym {
+        $mod+Left focus left
+        $mod+Down focus down
+        $mod+Up focus up
+        $mod+Right focus right
+        $mod+$left focus left
+        $mod+$down focus down
+        $mod+$up focus up
+        $mod+$right focus right
+        $mod+Shift+Left move left
+        $mod+Shift+Down move down
+        $mod+Shift+Up move up
+        $mod+Shift+Right move right
+        $mod+Shift+$left move left
+        $mod+Shift+$down move down
+        $mod+Shift+$up move up
+        $mod+Shift+$right move right
+    }
+
+#
+# Workspaces:
+#
+    bindcode {
+        $mod+10 workspace number 1
+        $mod+11 workspace number 2
+        $mod+12 workspace number 3
+        $mod+13 workspace number 4
+        $mod+14 workspace number 5
+        $mod+15 workspace number 6
+        $mod+16 workspace number 7
+        $mod+17 workspace number 8
+        $mod+18 workspace number 9
+        $mod+19 workspace number 10
+        $mod+Shift+10 move container to workspace number 1
+        $mod+Shift+11 move container to workspace number 2
+        $mod+Shift+12 move container to workspace number 3
+        $mod+Shift+13 move container to workspace number 4
+        $mod+Shift+14 move container to workspace number 5
+        $mod+Shift+15 move container to workspace number 6
+        $mod+Shift+16 move container to workspace number 7
+        $mod+Shift+17 move container to workspace number 8
+        $mod+Shift+18 move container to workspace number 9
+        $mod+Shift+19 move container to workspace number 10
+    }
+
+#
+# Layout stuff:
+#
+    bindsym $mod+v splitv
+    bindsym $mod+b splith
+    bindsym $mod+s layout stacking
+    bindsym $mod+w layout tabbed
+    bindsym $mod+e layout toggle split
+    bindsym $mod+f fullscreen
+    bindsym $mod+Shift+space floating toggle
+    bindsym $mod+space focus mode_toggle
+    bindsym $mod+a focus parent
+
+#
+# Scratchpad:
+#
+    bindsym $mod+Shift+minus move scratchpad
+    bindsym $mod+minus scratchpad show
+
+#
+# Resizing containers:
+#
+    bindsym {
+        $mod+ctrl+Right resize shrink width 10 px
+        $mod+ctrl+Up resize grow height 10 px
+        $mod+ctrl+Down resize shrink height 10 px
+        $mod+ctrl+Left resize grow width 10 px
+        $mod+ctrl+$right resize shrink width 10 px
+        $mod+ctrl+$up resize grow height 10 px
+        $mod+ctrl+$down resize shrink height 10 px
+        $mod+ctrl+$left resize grow width 10 px
+    }
+
+    bindsym --whole-window --border {
+        $mod+button4 resize shrink height 5 px or 5 ppt
+        $mod+button5 resize grow height 5 px or 5 ppt
+        $mod+Shift+button4 resize shrink width 5 px or 5 ppt
+        $mod+Shift+button5 resize grow width 5 px or 5 ppt
+    }
+
+#
+# Media Keys
+#
+    bindsym {
+        XF86AudioRaiseVolume exec pamixer -ui 2
+        XF86AudioLowerVolume exec pamixer -ud 2
+        XF86AudioMute exec pamixer --toggle-mute
+        XF86AudioPlay exec playerctl play-pause
+        XF86AudioNext exec playerctl next
+        XF86AudioPrev exec playerctl previous
+        XF86MonBrightnessUp exec brightnessctl -c backlight set +2%
+        XF86MonBrightnessDown exec brightnessctl -c backlight set 2%-
+    }
+
+#
+# App shortcuts
+#
+    bindsym $mod+n exec thunar
+    bindsym $mod+o exec firefox
+    bindsym $mod+Ctrl+v exec cliphist list | fuzzel -d -w 40 -l 12 -p "  Clipboard:"| cliphist decode | wl-copy
+    bindsym $mod+Ctrl+x exec cliphist list | fuzzel -d -w 90 -l 30 -p "Select an entry to delete it from cliphist:"| cliphist delete
+
+#
+# Screenshots
+#
+  bindsym $mod+g exec grim -g "$(slurp)" - | swappy -f -
+  bindsym $mod+ctrl+g exec ~/.config/sway/scripts/screenshot_window.sh
+  bindsym $mod+Shift+g exec ~/.config/sway/scripts/screenshot_display.sh
+# Screenshot
+#bindsym $mod+Shift+g exec grim ~/Pictures/screenshot-$(date +%Y%m%d-%H%M%S>
+#bindsym $mod+g exec grim -g "$(slurp)" ~/Pictures/screenshot-$(date +%Y%m%>
+#bindsym $mod+Mod1+g exec grim -g "$(swaymsg -t get_tree | jq -r '.. | sele>
+#
+### Input configuration
+input type:touchpad {
+    dwt enabled
+    tap enabled
+    natural_scroll enabled
+    drag_lock disabled
+    middle_emulation enabled
+    scroll_method two_finger
+}
+
+input type:keyboard xkb_numlock enabled
+
+exec_always {
+    'swaymsg input type:keyboard xkb_layout "$(localectl status | grep "X11 Layout" | sed -e "s/^.*X11 Layout://")"'
+    'swaymsg input type:keyboard xkb_variant "$(localectl status | grep "X11 Variant" | sed -e "s/^.*X11 Variant://")"'
+}
+
+### Output configuration
+exec_always ~/.config/sway/scripts/import-gsettings
+
+# Gaps
+gaps inner 11
+gaps outer 0
+
+# Borders
+default_border pixel 2
+smart_borders on
+
+# Font
+font pango:JetBrainsMono Nerd Font 10
+
+# Wallpaper
+exec ~/.azotebg
+
+# Title format for windows
+for_window [shell="xdg_shell"] title_format "%title (%app_id)"
+for_window [shell="x_wayland"] title_format "%class - %title"
+
+# Include colors
+include $HOME/.config/sway/config.d/colors.conf
+
+# Include qt settings
+include $HOME/.config/sway/config.d/qt-env.conf
+
+# Cursor
+include $HOME/.config/sway/config.d/cursor.conf
+#Autostart
+exec syncthing --no-browser
+exec gammastep -l 17.46:78.35 -t 6500:3500
+# exec --no-startup-id libinput-gestures
+
+# Status Bar
+bar {
+    swaybar_command waybar
+}

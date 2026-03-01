@@ -1,0 +1,89 @@
+{
+  "$schema": "https://raw.githubusercontent.com/JanDeDobbeleer/oh-my-posh/main/themes/schema.json",
+  "transient_prompt": {
+    "template": "❯ ",
+    "foreground": "#ebdbb2",
+    "background": "transparent"
+  },
+  "blocks": [
+    {
+      "type": "prompt",
+      "alignment": "left",
+      "segments": [
+        {
+          "properties": {
+            "cache_duration": "none",
+            "style": "full"
+          },
+          "template": "{{ .Path }}",
+          "foreground": "#458588",
+          "type": "path",
+          "style": "plain"
+        },
+        {
+          "properties": {
+            "cache_duration": "none"
+          },
+          "template": " {{ .HEAD }}{{ if .Working.Changed }}*{{ end }}",
+          "foreground": "#689d6a",
+          "type": "git",
+          "style": "plain"
+        },
+        {
+          "properties": {
+            "cache_duration": "none"
+          },
+          "template": " \ue718 {{ .Full }}",
+          "foreground": "#8ec07c",
+          "type": "node",
+          "style": "plain"
+        },
+        {
+          "properties": {
+            "cache_duration": "none"
+          },
+          "template": " \ue235 {{ .Full }}",
+          "foreground": "#d3869b",
+          "type": "python",
+          "style": "plain"
+        }
+      ],
+      "newline": true
+    },
+    {
+      "type": "rprompt",
+      "segments": [
+        {
+          "properties": {
+            "cache_duration": "none"
+          },
+          "template": "{{ .FormattedMs }}",
+          "foreground": "#fabd2f",
+          "type": "executiontime",
+          "style": "plain"
+        }
+      ]
+    },
+    {
+      "type": "prompt",
+      "alignment": "left",
+      "segments": [
+        {
+          "properties": {
+            "cache_duration": "none"
+          },
+          "template": "❯",
+          "foreground": "#b8bb26",
+          "type": "text",
+          "style": "plain",
+          "foreground_templates": [
+            "{{ if gt .Code 0 }}#cc241d{{ end }}"
+          ]
+        }
+      ],
+      "newline": true
+    }
+  ],
+  "version": 3,
+  "final_space": true
+}
