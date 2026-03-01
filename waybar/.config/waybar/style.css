@@ -53,7 +53,6 @@
 #waybar {
     background-color: @crust;
     color: @text;
-    border-bottom: 2px solid @lavender;
 }
 
 /* Pill-style module background */
@@ -217,7 +216,7 @@
 #custom-power {
     color: @red;
     background-color: transparent;
-    font-size: 14px;
+    font-size: 13px;
     padding: 0 10px;
     margin-right: 5px;
 }
