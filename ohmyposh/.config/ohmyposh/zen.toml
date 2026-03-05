@@ -17,6 +17,7 @@ final_space = true
   alignment = 'left'
   newline = true
 
+  # Segment for the current directory path
   [[blocks.segments]]
     template = '{{ .Path }}'
     foreground = 'blue'
@@ -25,11 +26,35 @@ final_space = true
     style = 'plain'
 
     [blocks.segments.options]
-      cache_duration = 'none'
       style = 'full'
 
+  # Segment for Python virtual environment
   [[blocks.segments]]
-    template = ' {{ .HEAD }}{{ if or (.Working.Changed) (.Staging.Changed) }} {{ end }} <cyan>{{ if gt .Behind 0 }}⇣{{ end }}{{ if gt .Ahead 0 }}⇡{{ end }}</>'
+    template = ' <#EEDC82>via</>   {{ if .Venv }}{{ .Venv }} {{ end }}({{ .Full }})'
+    foreground = '#3498DB'
+    background = 'transparent'
+    type = 'python'
+    style = 'plain'
+
+    [blocks.segments.options]
+      display_mode = 'environment' # Recommended to show only when in a venv
+      fetch_virtual_env = true
+
+  # Segment for Node.js projects (including React, Vue, etc.)
+  [[blocks.segments]]
+    template = ' <#EEDC82>via</>   ({{ .Full }})'
+    foreground = '#4CA84C'
+    background = 'transparent'
+    type = 'node'
+    style = 'plain'
+
+    [blocks.segments.options]
+      display_mode = 'files' # Show when package.json, etc., is found
+      fetch_package_manager = true
+
+  # Segment for Git status
+  [[blocks.segments]]
+    template = ' {{ .HEAD }}{{ if or (.Working.Changed) (.Staging.Changed) }}  {{ end }}{{ if gt .Behind 0 }} ⇣{{ .Behind }}{{ end }}{{ if gt .Ahead 0 }} ⇡{{ .Ahead }}{{ end }}'
     foreground = 'p:grey'
     background = 'transparent'
     type = 'git'
@@ -37,14 +62,13 @@ final_space = true
 
     [blocks.segments.options]
       branch_icon = ' '
-      cache_duration = 'none'
-      commit_icon = '@'
       fetch_status = true
 
 [[blocks]]
   type = 'rprompt'
   overflow = 'hidden'
 
+  # Segment for command execution time
   [[blocks.segments]]
     template = '{{ .FormattedMs }}'
     foreground = 'yellow'
@@ -53,20 +77,17 @@ final_space = true
     style = 'plain'
 
     [blocks.segments.options]
-      cache_duration = 'none'
-      threshold = 5000
+      threshold = 1000 # Only show if execution time > 1s
 
 [[blocks]]
   type = 'prompt'
   alignment = 'left'
   newline = true
 
+  # The main prompt symbol
   [[blocks.segments]]
     template = '❯'
     background = 'transparent'
     type = 'text'
     style = 'plain'
     foreground_templates = ['{{if gt .Code 0}}red{{end}}', '{{if eq .Code 0}}green{{end}}']
-
-    [blocks.segments.options]
-      cache_duration = 'none'
