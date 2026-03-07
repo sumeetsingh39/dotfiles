@@ -87,7 +87,7 @@ set $powermenu ~/.config/sway/scripts/power_menu.sh
     bindsym $mod+Return exec $term
 
     # Open the power menu
-    bindsym $mod+Shift+e exec $powermenu
+    bindsym $mod+x exec $powermenu
 
     # Kill focused window
     bindsym $mod+q kill
@@ -265,7 +265,7 @@ default_border pixel 2
 smart_borders on
 
 # Font
-font pango:JetBrainsMono Nerd Font 10
+font pango:JetBrainsMono Nerd Font 12
 
 # Wallpaper
 exec ~/.azotebg
