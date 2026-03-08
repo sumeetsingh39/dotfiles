@@ -33,7 +33,7 @@ label#clock-time {
 }
 
 label#clock-date {
-    font-family: "Lexend";
+    font-family: "Sofia Pro Soft";
     font-size: 16px;
     color: #a6adc8;
     margin-bottom: 24px;
@@ -85,7 +85,7 @@ image#userinfo-image {
 }
 
 label#userinfo-name {
-    font-family: "Lexend";
+    font-family: "Sofia Pro Soft";
     font-size: 16px;
     font-weight: bold;
     color: #cdd6f4;
@@ -110,7 +110,7 @@ button.powerbar-button {
     border: 1px solid #45475a;
     border-radius: 8px;
     padding: 8px 16px;
-    font-family: "Lexend";
+    font-family: "Sofia Pro Soft";
     font-size: 13px;
     transition: all 0.15s ease;
     min-width: 64px;
