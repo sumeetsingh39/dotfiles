@@ -1,4 +1,4 @@
-# Dunst - Catppuccin Mocha Lavender
+# Dunst - Gruvbox Dark Hard
 # Place at ~/.config/dunst/dunstrc
 
 [global]
@@ -33,7 +33,7 @@
     horizontal_padding = 12
     text_icon_padding = 8
     frame_width = 2
-    frame_color = "#b4befe"
+    frame_color = "#8ec07c"
     gap_size = 6
     separator_color = frame
     sort = yes
@@ -56,7 +56,7 @@
 
     # Icons
     enable_recursive_icon_lookup = true
-    icon_theme = Papirus-Dark, Adwaita
+    icon_theme = Gruvbox-Plus-Dark
     icon_position = left
     min_icon_size = 32
     max_icon_size = 48
@@ -84,21 +84,20 @@
     per_monitor_dpi = false
 
 [urgency_low]
-    background = "#1e1e2e"
-    foreground = "#cdd6f4"
-    frame_color = "#45475a"
+    background = "#1d2021"
+    foreground = "#ebdbb2"
+    frame_color = "#504945"
     timeout = 4
-    # icon = /path/to/icon
 
 [urgency_normal]
-    background = "#1e1e2e"
-    foreground = "#cdd6f4"
-    frame_color = "#b4befe"
+    background = "#1d2021"
+    foreground = "#ebdbb2"
+    frame_color = "#8ec07c"
     timeout = 6
 
 [urgency_critical]
-    background = "#1e1e2e"
-    foreground = "#f38ba8"
-    frame_color = "#f38ba8"
+    background = "#1d2021"
+    foreground = "#fb4934"
+    frame_color = "#fb4934"
     timeout = 0
     # Critical stays until dismissed

@@ -48,7 +48,7 @@
 	navigate = true          # n/N to jump between diff sections
 	side-by-side = true      # side by side diffs
 	line-numbers = true
-	syntax-theme = Catppuccin Mocha
+	syntax-theme = gruvbox-dark
 	hyperlinks = true
 	file-style = bold yellow
 	file-decoration-style = yellow ul
@@ -61,7 +61,7 @@
 	map-styles = \
 		bold purple => syntax "#3b1f3b", \
 		bold blue => syntax "#1f2d3b"
-	blame-palette = "#1e1e2e" "#181825" "#11111b" "#313244"
+	blame-palette = "#1d2021" "#282828" "#3c3836" "#504945"
 
 [interactive]
 	diffFilter = delta --color-only   # delta in interactive mode (git add -p)
@@ -97,3 +97,9 @@
 
 [credential]
 	helper = /usr/lib/git-core/git-credential-libsecret  # store credentials in keyring
+[credential "https://github.com"]
+	helper = 
+	helper = !/usr/bin/gh auth git-credential
+[credential "https://gist.github.com"]
+	helper = 
+	helper = !/usr/bin/gh auth git-credential

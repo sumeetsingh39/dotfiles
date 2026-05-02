@@ -1,58 +1,64 @@
 /* =============================================================================
- * Waybar - Catppuccin Mocha Lavender Theme
+ * Waybar - Gruvbox Dark Hard Theme
  * =========================================================================== */
 
-/* Catppuccin Mocha palette */
-@define-color base      #1e1e2e;
-@define-color mantle    #181825;
-@define-color crust     #11111b;
-@define-color surface0  #313244;
-@define-color surface1  #45475a;
-@define-color surface2  #585b70;
-@define-color overlay0  #6c7086;
-@define-color overlay1  #7f849c;
-@define-color overlay2  #9399b2;
-@define-color subtext0  #a6adc8;
-@define-color subtext1  #bac2de;
-@define-color text      #cdd6f4;
-@define-color lavender  #b4befe;
-@define-color blue      #89b4fa;
-@define-color sapphire  #74c7ec;
-@define-color sky       #89dceb;
-@define-color teal      #94e2d5;
-@define-color green     #a6e3a1;
-@define-color yellow    #f9e2af;
-@define-color peach     #fab387;
-@define-color maroon    #eba0ac;
-@define-color red       #f38ba8;
-@define-color mauve     #cba6f7;
-@define-color pink      #f5c2e7;
-@define-color flamingo  #f2cdcd;
-@define-color rosewater #f5e0dc;
+/* Gruvbox Dark Hard palette */
+@define-color bg       #1d2021;
+@define-color bg0      #282828;
+@define-color bg1      #3c3836;
+@define-color bg2      #504945;
+@define-color bg3      #665c54;
+@define-color bg4      #7c6f64;
+@define-color fg       #ebdbb2;
+@define-color fg0      #fbf1c7;
+@define-color fg2      #d5c4a1;
+@define-color fg3      #bdae93;
+@define-color fg4      #a89984;
+@define-color red      #fb4934;
+@define-color green    #b8bb26;
+@define-color yellow   #fabd2f;
+@define-color blue     #83a598;
+@define-color purple   #d3869b;
+@define-color aqua     #8ec07c;
+@define-color orange   #fe8019;
+@define-color gray     #928374;
+@define-color darkred  #cc241d;
+@define-color darkaqua #689d6a;
 
 @keyframes blink-warning {
-    70% { color: @base; }
-    to  { color: @base; background-color: @peach; }
+  70% {
+    color: @bg;
+  }
+  to {
+    color: @bg;
+    background-color: @orange;
+  }
 }
 
 @keyframes blink-critical {
-    70% { color: @base; }
-    to  { color: @base; background-color: @red; }
+  70% {
+    color: @bg;
+  }
+  to {
+    color: @bg;
+    background-color: @red;
+  }
 }
 
 * {
-    border: none;
-    border-radius: 0;
-    min-height: 0;
-    margin: 0;
-    padding: 0;
-    font-family: "JetBrainsMono Nerd Font", "Noto Sans", monospace;
-    font-size: 15px;
+  border: none;
+  border-radius: 0;
+  min-height: 0;
+  margin: 0;
+  padding: 0;
+  font-family:
+    "JetBrainsMono Nerd Font", "Google Sans Code", "Noto Sans", monospace;
+  font-size: 15px;
 }
 
 #waybar {
-    background-color: @crust;
-    color: @text;
+  background-color: @bg;
+  color: @fg;
 }
 
 /* Pill-style module background */
@@ -73,171 +79,217 @@
 #custom-launcher,
 #custom-audio,
 #custom-weather,
-#custom-stats {
-    padding: 0 10px;
-    margin: 3px 2px;
-    border-radius: 6px;
-    background-color: @surface0;
-    color: @text;
+#custom-stats,
+#mpris {
+  padding: 0 10px;
+  margin: 3px 2px;
+  border-radius: 6px;
+  background-color: @bg1;
+  color: @fg;
 }
 
 /* Launcher - accent colored */
 #custom-launcher {
-    color: @lavender;
-    background-color: transparent;
-    font-size: 18px;
-    padding: 0 14px 0 10px;
-    margin: 0;
+  color: @aqua;
+  background-color: transparent;
+  font-size: 18px;
+  padding: 0 14px 0 10px;
+  margin: 0;
 }
 
 /* Workspaces */
 #workspaces {
-    background-color: transparent;
-    padding: 0 4px;
+  background-color: transparent;
+  padding: 0 4px;
 }
 
 #workspaces button {
-    border-radius: 5px;
-    color: @subtext0;
-    background-color: @surface0;
-    padding: 2px 0px;
-    margin: 3px 4px;
-    transition: all 0.2s ease;
+  border-radius: 5px;
+  color: @fg4;
+  background-color: @bg1;
+  padding: 2px 0px;
+  margin: 3px 4px;
+  transition: all 0.2s ease;
 }
 
 #workspaces button:hover {
-    background-color: @surface1;
-    color: @text;
-    box-shadow: none;
+  background-color: @bg2;
+  color: @fg;
+  box-shadow: none;
 }
 
 #workspaces button.focused {
-    background-color: @lavender;
-    color: @base;
-    font-weight: bold;
+  background-color: @aqua;
+  color: @bg;
+  font-weight: bold;
 }
 
 #workspaces button.urgent {
-    background-color: @red;
-    color: @base;
+  background-color: @red;
+  color: @bg;
 }
 
 /* Mode */
 #mode {
-    background-color: @mauve;
-    color: @base;
-    font-style: italic;
-    font-weight: bold;
-    padding: 0 12px;
+  background-color: @purple;
+  color: @bg;
+  font-style: italic;
+  font-weight: bold;
+  padding: 0 12px;
 }
 
 /* Window title */
 #window {
-    background-color: transparent;
-    color: @subtext1;
-    font-weight: bold;
+  background-color: transparent;
+  color: @fg3;
+  font-family: "Circular", "Google Sans Code", sans-serif;
 }
 
 /* Clock - centered, accent color */
 #clock {
-    background-color: @surface0;
-    color: @lavender;
-    font-weight: bold;
+  background-color: @bg1;
+  color: @aqua;
 }
 
 /* CPU */
 #cpu {
-    color: @sky;
+  color: @blue;
 }
 
-#cpu.warning { color: @peach; }
+#cpu.warning {
+  color: @orange;
+}
 #cpu.critical {
-    color: @red;
-    animation-name: blink-critical;
-    animation-duration: 2s;
-    animation-timing-function: linear;
-    animation-iteration-count: infinite;
-    animation-direction: alternate;
+  color: @red;
+  animation-name: blink-critical;
+  animation-duration: 2s;
+  animation-timing-function: linear;
+  animation-iteration-count: infinite;
+  animation-direction: alternate;
 }
 
 /* Memory */
-#memory { color: @sapphire; }
-#memory.warning { color: @peach; }
+#memory {
+  color: @blue;
+}
+#memory.warning {
+  color: @orange;
+}
 #memory.critical {
-    color: @red;
-    animation-name: blink-critical;
-    animation-duration: 2s;
-    animation-timing-function: linear;
-    animation-iteration-count: infinite;
-    animation-direction: alternate;
+  color: @red;
+  animation-name: blink-critical;
+  animation-duration: 2s;
+  animation-timing-function: linear;
+  animation-iteration-count: infinite;
+  animation-direction: alternate;
 }
 
 /* Backlight */
-#backlight { color: @yellow; }
+#backlight {
+  color: @yellow;
+}
 
 /* Pulseaudio */
-#pulseaudio { color: @teal; }
-#pulseaudio.muted { color: @overlay1; }
+#pulseaudio {
+  color: @aqua;
+}
+#pulseaudio.muted {
+  color: @gray;
+}
 
 /* Battery */
-#battery { color: @green; }
-#battery.warning { color: @peach; }
-#battery.critical { color: @red; }
+#battery {
+  color: @green;
+}
+#battery.warning {
+  color: @orange;
+}
+#battery.critical {
+  color: @red;
+}
 #battery.warning.discharging {
-    animation-name: blink-warning;
-    animation-duration: 3s;
-    animation-timing-function: linear;
-    animation-iteration-count: infinite;
-    animation-direction: alternate;
+  animation-name: blink-warning;
+  animation-duration: 3s;
+  animation-timing-function: linear;
+  animation-iteration-count: infinite;
+  animation-direction: alternate;
 }
 #battery.critical.discharging {
-    animation-name: blink-critical;
-    animation-duration: 2s;
-    animation-timing-function: linear;
-    animation-iteration-count: infinite;
-    animation-direction: alternate;
+  animation-name: blink-critical;
+  animation-duration: 2s;
+  animation-timing-function: linear;
+  animation-iteration-count: infinite;
+  animation-direction: alternate;
 }
-#battery.charging { color: @green; }
+#battery.charging {
+  color: @green;
+}
 
 /* Network */
-#network { color: @blue; }
-#network.disconnected { color: @red; }
+#network {
+  color: @blue;
+}
+#network.disconnected {
+  color: @red;
+}
+
+/* MPRIS */
+#mpris {
+  color: @purple;
+}
 
 /* Tray */
-#tray { background-color: @surface0; }
-#tray > .passive { -gtk-icon-effect: dim; }
-#tray > .needs-attention { -gtk-icon-effect: highlight; background-color: @maroon; }
+#tray {
+  background-color: @bg1;
+}
+#tray > .passive {
+  -gtk-icon-effect: dim;
+}
+#tray > .needs-attention {
+  -gtk-icon-effect: highlight;
+  background-color: @orange;
+}
 
 /* Idle inhibitor */
-#idle_inhibitor { color: @overlay2; }
-#idle_inhibitor.activated { color: @lavender; }
+#idle_inhibitor {
+  color: @gray;
+}
+#idle_inhibitor.activated {
+  color: @aqua;
+}
 
 /* Power button */
 #custom-power {
-    color: @red;
-    background-color: transparent;
-    font-size: 13px;
-    padding: 0 10px;
-    margin-right: 5px;
+  color: @red;
+  background-color: transparent;
+  font-size: 20px;
+  padding: 0 10px;
+  margin-right: 5px;
 }
 
 #custom-power:hover {
-    background-color: @red;
-    color: @base;
-    border-radius: 6px;
+  background-color: @red;
+  color: @bg;
+  border-radius: 6px;
 }
 
-#custom-stats{
-    color: @teal;
+#custom-stats {
+  color: @aqua;
 }
 #custom-stats.critical {
   color: @red;
-  background-color: @rosewater;
+  background-color: @fg3;
   animation: blink-critical 2s ease-in-out infinite;
 }
 
-#custom-audio{color:@peach;}
-#custom-weather{color:@rosewater;}
+#custom-audio {
+  color: @orange;
+}
+#custom-weather {
+  color: @fg2;
+}
 
 /* Keyboard layout */
-#custom-keyboard-layout { color: @flamingo; }
+#custom-keyboard-layout {
+  color: @purple;
+}

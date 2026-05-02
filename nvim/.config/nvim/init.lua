@@ -1,5 +1,5 @@
 -- =============================================================================
--- Minimal Neovim Config - Catppuccin Mocha Lavender
+-- Minimal Neovim Config - Gruvbox Dark Hard
 -- ~/.config/nvim/init.lua
 -- =============================================================================
 
@@ -26,7 +26,7 @@ o.smartcase = true        -- unless you type uppercase
 o.hlsearch = true         -- highlight search results
 o.incsearch = true        -- highlight as you type
 
-o.termguicolors = true    -- true color support (required for catppuccin)
+o.termguicolors = true    -- true color support (required for gruvbox)
 o.signcolumn = "yes"      -- always show sign column (no layout shifts)
 o.colorcolumn = "80"      -- subtle line at 80 chars
 
@@ -102,41 +102,34 @@ map("n", "<S-l>", "<cmd>bnext<CR>",     { desc = "Next buffer" })
 map("n", "<S-h>", "<cmd>bprevious<CR>", { desc = "Prev buffer" })
 map("n", "<leader>bd", "<cmd>bdelete<CR>", { desc = "Delete buffer" })
 
--- ==================== Colorscheme (Catppuccin) ====================
+-- ==================== Colorscheme (Gruvbox) ====================
 
--- Auto-install catppuccin if not present using native pack system
-local catppuccin_path = vim.fn.stdpath("data") .. "/site/pack/catppuccin/start/catppuccin"
+-- Auto-install gruvbox if not present using native pack system
+local gruvbox_path = vim.fn.stdpath("data") .. "/site/pack/gruvbox/start/gruvbox"
 
-if vim.fn.isdirectory(catppuccin_path) == 0 then
-    vim.notify("Installing Catppuccin theme...", vim.log.levels.INFO)
+if vim.fn.isdirectory(gruvbox_path) == 0 then
+    vim.notify("Installing Gruvbox theme...", vim.log.levels.INFO)
     vim.fn.system({
         "git", "clone", "--depth=1",
-        "https://github.com/catppuccin/nvim",
-        catppuccin_path
+        "https://github.com/ellisonleao/gruvbox.nvim",
+        gruvbox_path
     })
     vim.cmd("packloadall")
 end
 
 -- Configure and apply theme
-require("catppuccin").setup({
-    flavour = "mocha",
-    integrations = {
-        treesitter = true,
-    },
-    highlight_overrides = {
-        mocha = function(colors)
-            return {
-                -- Use lavender as the accent color
-                CursorLineNr = { fg = colors.lavender, bold = true },
-                Visual        = { bg = colors.surface1 },
-                Search        = { bg = colors.lavender, fg = colors.base },
-                IncSearch     = { bg = colors.mauve,    fg = colors.base },
-            }
-        end,
+require("gruvbox").setup({
+    contrast = "hard",
+    overrides = {
+        CursorLineNr = { fg = "#8ec07c", bold = true },
+        Visual        = { bg = "#504945" },
+        Search        = { bg = "#8ec07c", fg = "#1d2021" },
+        IncSearch     = { bg = "#fe8019", fg = "#1d2021" },
     },
 })
 
-vim.cmd("colorscheme catppuccin-mocha")
+vim.o.background = "dark"
+vim.cmd("colorscheme gruvbox")
 
 -- ==================== Syntax Highlighting ====================
 

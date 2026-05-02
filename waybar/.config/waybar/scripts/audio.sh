@@ -18,7 +18,7 @@ else
     if [ $VOLUME -ge 66 ]; then
         ICON=" "
     elif [ $VOLUME -ge 33 ]; then
-        ICON=" "
+        ICON=""
     else
         ICON=""
     fi

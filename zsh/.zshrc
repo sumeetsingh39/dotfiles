@@ -1,5 +1,5 @@
 # =============================================================================
-# .zshrc - EndeavourOS Sway / Catppuccin Mocha Lavender
+# .zshrc - EndeavourOS Sway / Gruvbox Dark Hard
 # =============================================================================
 
 # ==================== Zinit ====================
@@ -33,15 +33,15 @@ zinit cdreplay -q
 
 # ==================== Prompt ====================
 
-eval "$(oh-my-posh init zsh --config $HOME/.config/ohmyposh/zen.toml)"
+eval "$(oh-my-posh init zsh --config $HOME/.config/ohmyposh/gruvbox.omp.json)"
 
 # ==================== Vim mode ====================
 
 # zsh-vi-mode config — set normal mode indicator and keep some emacs bindings
 ZVM_VI_INSERT_ESCAPE_BINDKEY=jk       # jk to exit insert mode
 ZVM_LINE_INIT_MODE=$ZVM_MODE_INSERT   # start in insert mode
-ZVM_VI_HIGHLIGHT_FOREGROUND=#cdd6f4
-ZVM_VI_HIGHLIGHT_BACKGROUND=#45475a
+ZVM_VI_HIGHLIGHT_FOREGROUND=#ebdbb2
+ZVM_VI_HIGHLIGHT_BACKGROUND=#504945
 
 # Restore fzf bindings after zsh-vi-mode loads (it overrides them)
 zvm_after_init() {
@@ -93,8 +93,8 @@ export BROWSER=firefox
 export MANPAGER='sh -c "col -bx | bat -l man -p"'   # bat as man pager with syntax highlighting
 export MANROFFOPT='-c'
 
-# bat theme (Catppuccin Mocha)
-export BAT_THEME="Catppuccin Mocha"
+# bat theme (Gruvbox Dark)
+export BAT_THEME="gruvbox-dark"
 
 # ripgrep config file
 export RIPGREP_CONFIG_PATH="$HOME/.config/ripgrep/config"
@@ -105,13 +105,13 @@ export XDG_DATA_HOME="$HOME/.local/share"
 export XDG_CACHE_HOME="$HOME/.cache"
 
 # Wayland / cursor
-export XCURSOR_THEME=catppuccin-mocha-lavender-cursors
+export XCURSOR_THEME=phinger-cursors-dark
 export XCURSOR_SIZE=24
 export QT_QPA_PLATFORMTHEME=qt5ct
 export QT6_QPA_PLATFORMTHEME=qt6ct
 export QT_QPA_PLATFORM=wayland
 export QT_AUTO_SCREEN_SCALE_FACTOR=1
-export GTK_THEME=catppuccin-mocha-lavender-standard+default
+export GTK_THEME=Gruvbox-Dark
 
 # PATH
 export PATH="$HOME/.local/bin:$PATH"
@@ -387,10 +387,10 @@ export FZF_DEFAULT_COMMAND='rg --files --hidden --follow --glob "!.git"'
 export FZF_CTRL_T_COMMAND="$FZF_DEFAULT_COMMAND"
 export FZF_ALT_C_COMMAND='find . -type d 2>/dev/null'
 export FZF_DEFAULT_OPTS=" \
-  --color=bg+:#313244,bg:#1e1e2e,spinner:#f5e0dc,hl:#f38ba8 \
-  --color=fg:#cdd6f4,header:#f38ba8,info:#cba6f7,pointer:#f5e0dc \
-  --color=marker:#b4befe,fg+:#cdd6f4,prompt:#cba6f7,hl+:#f38ba8 \
-  --color=selected-bg:#45475a \
+  --color=bg+:#3c3836,bg:#1d2021,spinner:#ebdbb2,hl:#fb4934 \
+  --color=fg:#ebdbb2,header:#fb4934,info:#d3869b,pointer:#ebdbb2 \
+  --color=marker:#8ec07c,fg+:#ebdbb2,prompt:#d3869b,hl+:#fb4934 \
+  --color=selected-bg:#504945 \
   --bind 'ctrl-/:toggle-preview' \
   --bind 'ctrl-u:preview-half-page-up' \
   --bind 'ctrl-d:preview-half-page-down' \

@@ -42,4 +42,4 @@ case "$CONDITION" in
 esac
 
 # Format output
-echo "{\"text\": \"${ICON} ${TEMP}\", \"tooltip\": \"${CONDITION}\\nHumidity: ${HUMIDITY}\"}"
+echo "{\"text\": \"${ICON}  ${TEMP}\", \"tooltip\": \"${CONDITION}\\nHumidity: ${HUMIDITY}\"}"
